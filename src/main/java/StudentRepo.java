@@ -13,6 +13,16 @@ public class StudentRepo {
         return student;
     }
 
+
+    public Student findById(String id) throws invalidId{
+
+            if(students.get(id) == null){
+                throw new invalidId("id not found");
+            }
+            return students.get(id);
+
+    }
+
     public Optional<Student> findStudentById(String id) {
         return Optional.ofNullable(students.get(id));
     }

@@ -1,15 +1,18 @@
 public class Main {
 
     public static void main(String[] args) {
-        StudentService studentService = new StudentService();
+        StudentRepo studentRepo = new StudentRepo();
 
-        Student newStudent = Student.builder()
-                .name("Florian")
-                .subject("Geschichte")
-                .build();
 
-        Student savedStudent = studentService.addNewStudent(newStudent);
+        Student student = new Student("1", "Youmna" , "ert");
 
-        System.out.println("Student saved: " + savedStudent);
+        studentRepo.save(student);
+
+        try {
+            Student student1 =  studentRepo.findById("1");
+            System.out.println("Student found: " + student1);
+        }catch (Exception e){
+            System.out.println("Student not found");
+        }
     }
 }
